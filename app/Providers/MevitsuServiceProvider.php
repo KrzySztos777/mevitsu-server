@@ -25,7 +25,7 @@ class MevitsuServiceProvider extends ServiceProvider
     public function boot()
     {
 		// Create custom reponse macro for mevitsu application.
-		Response::macro('mevitsu', function ($http_code,$message,$json=null) {
+		Response::macro('mevitsu', function ($json,$http_code,$message) {
             return Response::make($json===null?null:json_encode($json), $http_code)
 				->header('Message', $message);
         });
