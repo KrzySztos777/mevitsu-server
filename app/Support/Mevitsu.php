@@ -3,24 +3,8 @@
 namespace App\Support;
   
 use Illuminate\Validation\Validator as Validator;
-use Illuminate\Http\Response as Response;
 
 class Mevitsu {
-	public static function valid(...$params){
-		return Validator::make(...$params);
-	}
-	/*
-	 * Create Mevitsu's app dedicated reponse
-	 * 
-	 * @param array $json
-	 * @param int $http_code
-	 * @param string $message
-	 * @return Illuminate\Http\Response
-	 */
-	public static function response(array $json,int $http_code, string $message) : Response {
-		return Response::make($json===null?null:json_encode($json), $http_code)
-			->header('Message', $message);
-	}
 	
 	/*
 	 * Validate form as static facade function
@@ -40,23 +24,6 @@ class Mevitsu {
 		};
 		$successMessages=array_map($successMessagesToArray,$successMessages);
 		//$successMessages is well-preapred right now. 
-/* NOT USED, BUT LEFT HERE [*]
-		//preparing crendetials
-		//add "bail" credential to $credentials
-		$addBailToCredentials= function(string|array $v):string|array{
-			if(gettype($v)=='string')
-				return 'bail|'.$v;
-			else{//type is array
-					array_unshift($v,'bail');
-					return $v;
-			}
-		};
-		$credentials=array_map($addBailToCredentials,$credentials);
-		//$credentials is well-prepared right now
-		
-		//validation...
-		$validator=Validator::make($values,$credentials,$customMessages=array(),$customAttributes=['name'=>'NAZWA'],$fallbackMessages=['name'=>'supcio']);
-		*/
 		
 		//prepare error messages
 		$messages=$validator->getMessageBag()->getMessages();
