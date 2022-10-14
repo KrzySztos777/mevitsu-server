@@ -26,7 +26,7 @@ class MevitsuServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-		Response::macro('mevitsu', function (array $json,int $http_code,string $message) {
+		Response::macro('mevitsu', function (?array $json,int $http_code,string $message) {
 			return Response::make($json===null?null:json_encode($json), $http_code)
 					->header('Message', $message)
 					->header('Content-Type', 'application/json');
