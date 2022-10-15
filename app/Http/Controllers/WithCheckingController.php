@@ -45,7 +45,10 @@ abstract class WithCheckingController extends Controller
 			
 		$this->messages=mevitsu::validatorToArray(
 			$this->validator,
-			array($name=>$this->successMessages[$name]),
+			array($name=>(array_key_exists($name,$this->successMessages))?//short if to force success message if not defined
+				$this->successMessages[$name]:
+				__('auth.valid_universal')
+			),
 			__('auth.valid_universal')
 		);
 		
