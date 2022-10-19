@@ -15,8 +15,14 @@ return [
 	
 	//login messages
     'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'logged_in' => 'You are logged in!',
+    
+    //logout messages
+    'logged_out' => 'You are logged out.',
+    
+    //password confirmation
+    'password' => 'The provided password is incorrect.',
     
     //register messages
     'register_success' => 'Account Created! Before login please verify your email.',
